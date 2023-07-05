@@ -1,5 +1,5 @@
 <suite name="Web test suite" verbose="1">
-    <test name="Smoke Tests">
+    <test name="Tests">
         <classes>
         </classes>
     </test>

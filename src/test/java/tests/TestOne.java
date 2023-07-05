@@ -9,7 +9,7 @@ import pages.*;
 public class TestOne extends BaseMethod {
     @DataProvider(name = "getData")
     public Object[][] getData() {
-        return new Object[][]{{"auto_user", "auto_pass"}};
+        return new Object[][]{{"Teodor123", "teodor123"}};
     }
 
     @Test(dataProvider = "getData")
@@ -42,7 +42,8 @@ public class TestOne extends BaseMethod {
         header.setDeleteBtn();
         header.clickConfirmBtn();
 
-        System.out.println("6. Verify the post number has decreased");
+        System.out.println("6. Verify the post number has decreased.");
+        existingPosts = profilePage.getExistingPostCount();
         Assert.assertEquals(currentPostCount, existingPosts - 1, "Incorrect post number");
 
 
