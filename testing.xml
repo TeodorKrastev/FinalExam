@@ -1,6 +1,7 @@
 <suite name="Web test suite" verbose="1">
     <test name="Tests">
         <classes>
+            <class name="tests.TestOne"></class>
         </classes>
     </test>
 </suite>
