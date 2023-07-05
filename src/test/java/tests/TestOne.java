@@ -6,9 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
 
-import java.io.File;
-
-public class TestTwo extends BaseMethod {
+public class TestOne extends BaseMethod {
     @DataProvider(name = "getData")
     public Object[][] getData() {
         return new Object[][]{{"auto_user", "auto_pass"}};
@@ -42,6 +40,7 @@ public class TestTwo extends BaseMethod {
 
         System.out.println("5. Click delete and confirm.");
         header.setDeleteBtn();
+        header.clickConfirmBtn();
 
         System.out.println("6. Verify the post number has decreased");
         Assert.assertEquals(currentPostCount, existingPosts - 1, "Incorrect post number");
