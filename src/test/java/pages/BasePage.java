@@ -36,9 +36,5 @@ public class BasePage {
         mediumWait.until(ExpectedConditions.urlContains(url));
     }
 
-    public String getElementText(WebElement element) {
-        smallWait.until(ExpectedConditions.visibilityOf(element));
-        return element.getText();
-    }
 
 }

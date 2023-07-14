@@ -1,9 +1,12 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -17,25 +20,33 @@ public class ProfilePage extends BasePage {
     @FindBy(css="app-post")
     List<WebElement> existingPosts;
 
+    @FindBy(css = "span.following-count")
+    List<WebElement> followerCount;
+
     public ProfilePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-    }
-
-    public String getUsernameHeaderText() {
-        return getElementText(usernameHeader);
     }
 
     public void verifyUrl() {
         verifyUrlContains(BASE_URL);
     }
 
-    public int getExistingPostCount(){
-        return  existingPosts.size();
+    public int getExistingPostCount() {
+        smallWait.until(ExpectedConditions.visibilityOfAllElements(existingPosts));
+
+        return existingPosts.size();
     }
 
     public  void openPostByIndex(int index){
         clickElement(existingPosts.get(index));
+    }
+
+    public int getFollowingCount() {
+        WebElement followersElement = driver.findElement(By.id("following"));
+        String followingText = followersElement.getText();
+        String cleanedText = followingText.replaceAll("\\D+", "");
+        return Integer.parseInt(cleanedText);
     }
 
 }

@@ -1,17 +1,21 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 
 public class NewPostPage extends BasePage {
     private final String URL = "http://training.skillo-bg.com:4200/posts/create";
+
     @FindBy(css = "input.file[type='file']")
     WebElement fileUploadInput;
+
     @FindBy(id = "create-post")
     WebElement submitBtn;
 
@@ -20,8 +24,12 @@ public class NewPostPage extends BasePage {
 
     @FindBy(css = "input.input-lg")
     WebElement fileNameField;
+
     @FindBy(css = ".image-preview")
     WebElement imagePreview;
+
+    @FindBy(css = ".profile-image-source")
+    WebElement changeProfilePictureButton;
 
     public NewPostPage(WebDriver driver) {
         super(driver);
@@ -40,17 +48,21 @@ public class NewPostPage extends BasePage {
         smallWait.until(ExpectedConditions.visibilityOf(imagePreview));
     }
 
-    public String getImageFileName(){
+    public String getImageFileName() {
         smallWait.until(ExpectedConditions.visibilityOf(fileNameField));
-        return  fileNameField.getAttribute("placeholder");
-
+        return fileNameField.getAttribute("placeholder");
     }
 
-    public void populateCaption(String text){
+    public void populateCaption(String text) {
         enterText(captionInput, text);
     }
 
-    public void clickSubmitBtn(){
+    public void clickSubmitBtn() {
         clickElement(submitBtn);
     }
+
+    public void clickChangeProfilePicture() {
+        changeProfilePictureButton.click();
+    }
+
 }

@@ -37,10 +37,6 @@ public class Header extends BasePage {
         clickElement(loginLink);
     }
 
-    public void goToHome() {
-        clickElement(homeLink);
-    }
-
     public void goToProfile() {
         clickElement(profileLink);
     }
@@ -49,14 +45,11 @@ public class Header extends BasePage {
         clickElement(newPostLink);
     }
 
-    public void goToSearchField() {
-        clickElement(searchField);
-    }
-
     public void setDeleteBtn() {
         clickElement(deleteBtn);
     }
     public void clickConfirmBtn() {
         clickElement(confirmBtn);
     }
+
 }

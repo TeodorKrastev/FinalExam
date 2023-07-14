@@ -38,10 +38,6 @@ public class LoginPage extends BasePage {
         clickElement(signInBtn);
     }
 
-    public String getSignInHeaderText() {
-        return getElementText(signInHeader);
-    }
-
     public void verifyUrl() {
         verifyUrl(URL);
     }

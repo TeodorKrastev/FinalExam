@@ -10,6 +10,13 @@ public class PostModal extends BasePage{
 
     @FindBy(tagName = "app-post-modal")
     WebElement modalDialog;
+
+    @FindBy(css = ".like")
+    WebElement likeButton;
+
+    @FindBy(css = ".ml-4")
+    WebElement dislikeButton;
+
     public PostModal(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -20,4 +27,12 @@ public class PostModal extends BasePage{
         smallWait.until(ExpectedConditions.visibilityOf(modalDialog));
     }
 
+    public void likePost(){
+        smallWait.until(ExpectedConditions.elementToBeClickable(likeButton));
+        clickElement(likeButton);
+    }
+    public void dislikePost() {
+        smallWait.until(ExpectedConditions.elementToBeClickable(likeButton));
+        clickElement(dislikeButton);
+    }
 }

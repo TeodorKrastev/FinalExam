@@ -1,7 +1,12 @@
 <suite name="Web test suite" verbose="1">
     <test name="Tests">
         <classes>
-            <class name="tests.TestOne"></class>
+            <class name="tests.Test01"></class>
+            <class name="tests.Test02"></class>
+            <class name="tests.Test03"></class>
+            <class name="tests.Test04"></class>
+            <class name="tests.Test05"></class>
+            <class name="tests.Test07"></class>
         </classes>
     </test>
 </suite>
