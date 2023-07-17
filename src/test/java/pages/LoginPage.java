@@ -9,9 +9,6 @@ public class LoginPage extends BasePage {
 
     public final String URL = "http://training.skillo-bg.com:4200/users/login";
 
-    @FindBy(css = "form .h4")
-    WebElement signInHeader;
-
     @FindBy(name = "usernameOrEmail")
     WebElement usernameField;
 

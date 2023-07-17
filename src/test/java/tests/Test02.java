@@ -38,13 +38,11 @@ public class Test02 extends BaseMethod {
         PostModal postModal = new PostModal(driver);
         postModal.waitForDialogAppear();
 
-        System.out.println("6. Comment on the post.");
-        WebElement commentField = driver.findElement(By.xpath("//input[@placeholder='Comment here']"));
-        commentField.sendKeys("Test Test.");
-        commentField.sendKeys(Keys.RETURN);
+        System.out.println("5. Comment on the post.");
+        postModal.waitForDialogAppear2();
+        postModal.writeComment("Test Test.");
 
         System.out.println("6. Confirm that the comment is displayed.");
-        WebElement newComment = driver.findElement(By.xpath(".//*[contains(text(), 'Test Test.')]"));
-        Assert.assertTrue(newComment.isDisplayed(), "The comment is not displayed");
+        Assert.assertTrue(postModal.isCommentDisplayed("Test Test."), "The comment is not displayed");
     }
 }
