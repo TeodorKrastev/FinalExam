@@ -17,9 +17,6 @@ public class ProfilePage extends BasePage {
     @FindBy(css="app-post")
     List<WebElement> existingPosts;
 
-    @FindBy(css = "span.following-count")
-    List<WebElement> followerCount;
-
     public ProfilePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
