@@ -16,6 +16,9 @@ public class NewPostPage extends BasePage {
     @FindBy(css = "input.file[type='file']")
     WebElement fileUploadInput;
 
+    @FindBy(css = "input[type='file']")
+    WebElement fileUploadInput2;
+
     @FindBy(id = "create-post")
     WebElement submitBtn;
 
@@ -27,9 +30,6 @@ public class NewPostPage extends BasePage {
 
     @FindBy(css = ".image-preview")
     WebElement imagePreview;
-
-    @FindBy(css = ".profile-image-source")
-    WebElement changeProfilePictureButton;
 
     public NewPostPage(WebDriver driver) {
         super(driver);
@@ -61,8 +61,8 @@ public class NewPostPage extends BasePage {
         clickElement(submitBtn);
     }
 
-    public void clickChangeProfilePicture() {
-        changeProfilePictureButton.click();
+    public void uploadProfilePicture(File file) {
+        fileUploadInput2.sendKeys(file.getAbsolutePath());
     }
 
 }

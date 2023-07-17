@@ -37,10 +37,17 @@ public class Test05 extends BaseMethod {
 
         System.out.println("6. Find specific person and follow him/her."); // the user will be "zelot"
         searchPage.searchUser("zelot");
+        searchPage.waitForUserInDropdown();
+        searchPage.clickOnUser(0);
         searchPage.clickFollow();
 
         System.out.println("7. Go to  and verify that following number is increased.");
         header.goToProfile();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         int newFollowersCount = profilePage.getFollowingCount();
         Assert.assertEquals(newFollowersCount, currentFollowingCount + 1, "Following number is not increased.");
     }

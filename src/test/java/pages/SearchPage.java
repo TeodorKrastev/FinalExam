@@ -1,30 +1,47 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
+
 public class SearchPage extends BasePage {
+
+    @FindBy(id = "search-bar")
+    WebElement searchField;
+
+    @FindBy(xpath = "//button[text()='Follow']")
+    WebElement followButton;
+
+    @FindBy(xpath = "//*[contains(text(), 'zelot')]")
+    List<WebElement> searchResults;
 
     public SearchPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
     public void goToSearchField() {
-        driver.findElement(By.id("search-bar")).click();
+        largeWait.until(ExpectedConditions.elementToBeClickable(searchField)).click();
     }
+
     public void searchUser(String username) {
-        driver.findElement(By.id("search-bar")).sendKeys(username);
-    }
+        largeWait.until(ExpectedConditions.visibilityOf(searchField)).sendKeys(username);
 
+    }
     public void clickFollow() {
-        mediumWait.until(ExpectedConditions.visibilityOfAllElements());
-        driver.findElement(By.xpath("//button[text()='Follow']"));
+        largeWait.until(ExpectedConditions.elementToBeClickable(followButton)).click();
     }
-    public void openUserProfile(String profileLink) {
-        driver.get(profileLink);
-
+    public void waitForUserInDropdown() {
+        largeWait.until(ExpectedConditions.visibilityOfAllElements(searchResults));
     }
 
+    public void clickOnUser(int index) {
+        WebElement user = searchResults.get(index);
+        user.click();
+    }
 }
+

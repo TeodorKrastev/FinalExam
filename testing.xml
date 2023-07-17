@@ -6,6 +6,7 @@
             <class name="tests.Test03"></class>
             <class name="tests.Test04"></class>
             <class name="tests.Test05"></class>
+            <class name="tests.Test06"></class>
             <class name="tests.Test07"></class>
         </classes>
     </test>

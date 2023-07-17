@@ -12,11 +12,13 @@ public class BasePage {
     protected final WebDriver driver;
     protected WebDriverWait smallWait;
     protected WebDriverWait mediumWait;
+    protected WebDriverWait largeWait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         smallWait = new WebDriverWait(driver, Duration.ofSeconds(5));
         mediumWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        largeWait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     protected void clickElement(WebElement element) {

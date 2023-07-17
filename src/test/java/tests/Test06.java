@@ -32,13 +32,13 @@ public class Test06 extends BaseMethod {
 
         System.out.println("4. Click on change profile picture button.");
         NewPostPage postPage = new NewPostPage(driver);
-        postPage.clickChangeProfilePicture();
+
 
         System.out.println("5. Upload a new picture.");
-        postPage.uploadImage(file);
+        postPage.uploadProfilePicture(file);
 
         System.out.println("6. Upload a new picture second time.");
-        postPage.uploadImage(file);
+        postPage.uploadProfilePicture(file);
 
         System.out.println("7. Check if the pop-up confirmation has appeared.");
         Assert.assertTrue(driver.findElement(By.id("toast-container")).isDisplayed(), "Confirmation does not appear.");
