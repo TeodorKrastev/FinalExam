@@ -7,9 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Header extends BasePage {
 
-    @FindBy(id = "nav-link-home")
-    WebElement homeLink;
-
     @FindBy(css = "#nav-link-login")
     WebElement loginLink;
 
@@ -18,9 +15,6 @@ public class Header extends BasePage {
 
     @FindBy(id = "nav-link-new-post")
     WebElement newPostLink;
-
-    @FindBy(id = "search-bar")
-    WebElement searchField;
 
     @FindBy(linkText = "Delete post")
     WebElement deleteBtn;

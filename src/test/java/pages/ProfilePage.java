@@ -14,9 +14,6 @@ import java.util.List;
 public class ProfilePage extends BasePage {
     private final String BASE_URL = "http://training.skillo-bg.com:4200/users/";
 
-    @FindBy(css = ".profile-user-settings > h2")
-    WebElement usernameHeader;
-
     @FindBy(css="app-post")
     List<WebElement> existingPosts;
 
