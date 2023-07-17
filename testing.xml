@@ -8,6 +8,7 @@
             <class name="tests.Test05"></class>
             <class name="tests.Test06"></class>
             <class name="tests.Test07"></class>
+            <class name="tests.Test08"></class>
         </classes>
     </test>
 </suite>

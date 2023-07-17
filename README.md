@@ -48,7 +48,16 @@ Test Five - Will it Follow count increase after one follow of specific person.
 6. Find specific person and follow him/her. - (The user will be "zelot")
 7. Go to my profile and verify that following number is increased.
 
-Test Six
+Test Six - Will it Follow count decrease after unfollowing specific person.
+1. Open homepage.
+2. Login with existing user.
+3. Go to profile page.
+4. Get number of current followers.
+5. Go to search field.
+6. Find specific person and unfollow him/her. - (The user will be "zelot")
+7. Go to my profile and verify that following number is decreased.
+
+Test Seven - Change profile photo.
 1. Open homepage.
 2. Login with existing user.
 3. Go to profile page.
@@ -56,7 +65,7 @@ Test Six
 5. Upload a new picture.
 6. Check if the pop-up confirmation has appeared.
 
-Test Seven - Deleting One Photo from my profile
+Test Eight - Deleting One Photo from my profile
 1. Open homepage.
 2. Login with existing user.
 3. Go to profile page and get current posts count.

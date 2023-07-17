@@ -44,7 +44,7 @@ public class Test05 extends BaseMethod {
         System.out.println("7. Go to  and verify that following number is increased.");
         header.goToProfile();
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

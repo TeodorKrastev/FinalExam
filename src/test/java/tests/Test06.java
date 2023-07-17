@@ -1,21 +1,18 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
 
-import java.io.File;
-
 public class Test06 extends BaseMethod {
     @DataProvider(name = "getData")
     public Object[][] getData() {
-        return new Object[][]{{"Teodor123", "teodor123", new File("src/test/java/upload/Road.jpg")}};
+        return new Object[][]{{"Teodor123", "teodor123"}};
     }
 
     @Test(dataProvider = "getData")
-    public void testChangeProfilePhoto(String username, String password, File file) {
+    public void testUnfollowingSpecificUser(String username, String password) {
         System.out.println("1. Open homepage.");
         HomePage homePage = new HomePage(driver);
         homePage.openSiteURl();
@@ -30,13 +27,28 @@ public class Test06 extends BaseMethod {
         System.out.println("3. Go to profile page.");
         header.goToProfile();
 
-        System.out.println("4. Click on change profile picture button.");
-        NewPostPage postPage = new NewPostPage(driver);
+        System.out.println("4. Get number of current followers.");
+        ProfilePage profilePage = new ProfilePage(driver);
+        int currentFollowingCount = profilePage.getFollowingCount();
 
-        System.out.println("5. Upload a new picture.");
-        postPage.uploadProfilePicture(file);
+        System.out.println("5. Go to search field.");
+        SearchPage searchPage = new SearchPage(driver);
+        searchPage.goToSearchField();
 
-        System.out.println("6. Check if the pop-up confirmation has appeared.");
-        Assert.assertTrue(driver.findElement(By.id("toast-container")).isDisplayed(), "Confirmation does not appear.");
+        System.out.println("6. Find specific person and unfollow him/her."); // the user will be "zelot"
+        searchPage.searchUser("zelot");
+        searchPage.waitForUserInDropdown();
+        searchPage.clickOnUser(0);
+        searchPage.clickUnfollow();
+
+        System.out.println("7. Go to  and verify that following number is decreased.");
+        header.goToProfile();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        int newFollowersCount = profilePage.getFollowingCount();
+        Assert.assertEquals(newFollowersCount, currentFollowingCount - 1, "Following number is not decreased.");
     }
 }
