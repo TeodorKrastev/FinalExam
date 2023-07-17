@@ -54,8 +54,7 @@ Test Six
 3. Go to profile page.
 4. Click on change profile picture button.
 5. Upload a new picture.
-6. Upload a new picture second time.
-7. Check if the pop-up confirmation has appeared.
+6. Check if the pop-up confirmation has appeared.
 
 Test Seven - Deleting One Photo from my profile
 1. Open homepage.
