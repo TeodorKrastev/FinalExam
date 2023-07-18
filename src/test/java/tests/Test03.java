@@ -41,6 +41,9 @@ public class Test03 extends BaseMethod {
 
         System.out.println("6. Check if the pop-up confirmation has appeared.");
         Assert.assertTrue(driver.findElement(By.id("toast-container")).isDisplayed(), "Confirmation does not appear.");
+
+        System.out.println("7. Verify that the icon is changed.");
+        postModal.verifyLikeIconChanged();
     }
 
 }

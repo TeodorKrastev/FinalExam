@@ -7,50 +7,69 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
-public class PostModal extends BasePage{
+public class PostModal extends BasePage {
 
     @FindBy(tagName = "app-post-modal")
     WebElement modalDialog;
 
-    @FindBy(css = ".like")
+    @FindBy(css = ".modal-content .post-info-container .like")
     WebElement likeButton;
 
-    @FindBy(css = ".ml-4")
+    @FindBy(css = ".modal-content .post-info-container .ml-4")
     WebElement dislikeButton;
 
-    @FindBy(xpath = "//input[@placeholder='Comment here']")
+    @FindBy(css = "input[placeholder='Comment here']")
     WebElement commentField;
+
+    @FindBy(css = ".modal-content .post-info-container .liked")
+    WebElement likeIcon;
+
+    @FindBy(css = ".modal-content .post-info-container .liked")
+    WebElement dislikeIcon;
 
     public PostModal(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-
-    public void waitForDialogAppear(){
-        smallWait.until(ExpectedConditions.visibilityOf(modalDialog));
+    public void waitForDialogAppear() {
+        waitForVisibility(modalDialog);
     }
 
-    public void likePost(){
+    public void likePost() {
         smallWait.until(ExpectedConditions.elementToBeClickable(likeButton));
         clickElement(likeButton);
     }
+
     public void dislikePost() {
-        smallWait.until(ExpectedConditions.elementToBeClickable(likeButton));
+        smallWait.until(ExpectedConditions.elementToBeClickable(dislikeButton));
         clickElement(dislikeButton);
     }
+
     public void waitForDialogAppear2() {
-        smallWait.until(ExpectedConditions.visibilityOf(commentField));
+        waitForVisibility(commentField);
     }
 
     public void writeComment(String comment) {
-        commentField.sendKeys(comment);
+        enterText(commentField, comment);
         commentField.sendKeys(Keys.RETURN);
     }
 
-    public boolean isCommentDisplayed(String comment) {
-        WebElement newComment = driver.findElement(By.xpath(".//*[contains(text(), '" + comment + "')]"));
-        return newComment.isDisplayed();
+    public String getCommentText() {
+        WebElement newComment = driver.findElement(By.xpath(".//*[contains(text(), 'Test Test.')]"));
+        return newComment.getText();
+    }
+
+    public boolean verifyLikeIconChanged() {
+        String iconClass = likeIcon.getAttribute("class");
+        Assert.assertTrue(iconClass.contains("liked"), "Dislike icon is not changed.");
+        return false;
+    }
+
+    public void verifyDislikeIconChanged() {
+        String iconClass = dislikeIcon.getAttribute("class");
+        Assert.assertTrue(iconClass.contains("liked"), "Dislike icon is not changed.");
     }
 }

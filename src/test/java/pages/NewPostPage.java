@@ -13,11 +13,8 @@ import java.io.File;
 public class NewPostPage extends BasePage {
     private final String URL = "http://training.skillo-bg.com:4200/posts/create";
 
-    @FindBy(css = "input.file[type='file']")
-    WebElement fileUploadInput;
-
     @FindBy(css = "input[type='file']")
-    WebElement fileUploadInput2;
+    WebElement fileUploadInput;
 
     @FindBy(id = "create-post")
     WebElement submitBtn;
@@ -45,11 +42,11 @@ public class NewPostPage extends BasePage {
     }
 
     public void waitForImageToShow() {
-        smallWait.until(ExpectedConditions.visibilityOf(imagePreview));
+        waitForVisibility(imagePreview);
     }
 
     public String getImageFileName() {
-        smallWait.until(ExpectedConditions.visibilityOf(fileNameField));
+        waitForVisibility(fileNameField);
         return fileNameField.getAttribute("placeholder");
     }
 
@@ -62,7 +59,7 @@ public class NewPostPage extends BasePage {
     }
 
     public void uploadProfilePicture(File file) {
-        fileUploadInput2.sendKeys(file.getAbsolutePath());
+        fileUploadInput.sendKeys(file.getAbsolutePath());
     }
 
 }

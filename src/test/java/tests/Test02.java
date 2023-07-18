@@ -1,18 +1,14 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
 
-
 public class Test02 extends BaseMethod {
     @DataProvider(name = "getData")
     public Object[][] getData() {
-        return new Object[][]{{"Teodor123", "teodor123",}};
+        return new Object[][]{{"Teodor123", "teodor123"}};
     }
 
     @Test(dataProvider = "getData")
@@ -43,6 +39,7 @@ public class Test02 extends BaseMethod {
         postModal.writeComment("Test Test.");
 
         System.out.println("6. Confirm that the comment is displayed.");
-        Assert.assertTrue(postModal.isCommentDisplayed("Test Test."), "The comment is not displayed");
+        String commentText = postModal.getCommentText();
+        Assert.assertEquals(commentText, "Test Test.", "The comment is not displayed");
     }
 }

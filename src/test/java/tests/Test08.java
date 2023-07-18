@@ -39,7 +39,7 @@ public class Test08 extends BaseMethod {
         postModal.waitForDialogAppear();
 
         System.out.println("5. Click delete and confirm.");
-        header.setDeleteBtn();
+        header.clickDeleteBtn();
         header.clickConfirmBtn();
 
         System.out.println("6. Check if the pop-up confirmation has appeared.");

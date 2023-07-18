@@ -30,6 +30,7 @@ Test Three - Like one of my posts.
 4. Open the latest post.
 5. Like the post.
 6. Check if the pop-up confirmation has appeared.
+7. Verify that the like icon is changed.
 
 Test Four - Dislike one of my posts.
 1. Open homepage.
@@ -38,6 +39,7 @@ Test Four - Dislike one of my posts.
 4. Open the latest post.
 5. Dislike the post.
 6. Check if the pop-up confirmation has appeared.
+7. Verify that the dislike icon is changed.
 
 Test Five - Will it Follow count increase after one follow of specific person.
 1. Open homepage.
@@ -61,9 +63,8 @@ Test Seven - Change profile photo.
 1. Open homepage.
 2. Login with existing user.
 3. Go to profile page.
-4. Click on change profile picture button.
-5. Upload a new picture.
-6. Check if the pop-up confirmation has appeared.
+4. Upload a new picture.
+5. Check if the pop-up confirmation has appeared.
 
 Test Eight - Deleting One Photo from my profile
 1. Open homepage.

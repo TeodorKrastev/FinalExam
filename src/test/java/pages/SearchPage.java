@@ -13,14 +13,9 @@ public class SearchPage extends BasePage {
     @FindBy(id = "search-bar")
     WebElement searchField;
 
-    @FindBy(xpath = "//button[text()='Follow']")
-    WebElement followButton;
-
     @FindBy(xpath = "//*[contains(text(), 'zelot')]")
     List<WebElement> searchResults;
 
-    @FindBy(xpath = "//button[text()='Unfollow']")
-    WebElement unFollowButton;
 
     public SearchPage(WebDriver driver) {
         super(driver);
@@ -36,10 +31,6 @@ public class SearchPage extends BasePage {
 
     }
 
-    public void clickFollow() {
-        largeWait.until(ExpectedConditions.elementToBeClickable(followButton)).click();
-    }
-
     public void waitForUserInDropdown() {
         largeWait.until(ExpectedConditions.visibilityOfAllElements(searchResults));
     }
@@ -49,8 +40,5 @@ public class SearchPage extends BasePage {
         user.click();
     }
 
-    public void clickUnfollow() {
-        largeWait.until(ExpectedConditions.elementToBeClickable(unFollowButton)).click();
-    }
 }
 

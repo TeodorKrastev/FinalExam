@@ -36,18 +36,16 @@ public class Test06 extends BaseMethod {
         searchPage.goToSearchField();
 
         System.out.println("6. Find specific person and unfollow him/her."); // the user will be "zelot"
+        UserProfilePage userProfilePage = new UserProfilePage(driver);
         searchPage.searchUser("zelot");
         searchPage.waitForUserInDropdown();
         searchPage.clickOnUser(0);
-        searchPage.clickUnfollow();
+        userProfilePage.clickUnfollow();
 
         System.out.println("7. Go to  and verify that following number is decreased.");
         header.goToProfile();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        profilePage.waitForFollowingCountDecrease(currentFollowingCount);
+
         int newFollowersCount = profilePage.getFollowingCount();
         Assert.assertEquals(newFollowersCount, currentFollowingCount - 1, "Following number is not decreased.");
     }

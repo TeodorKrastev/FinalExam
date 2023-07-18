@@ -20,7 +20,7 @@ public class Header extends BasePage {
     WebElement deleteBtn;
 
     @FindBy(xpath = "//button[text()='Yes']")
-     WebElement confirmBtn;
+    WebElement confirmBtn;
 
     public Header(WebDriver driver) {
         super(driver);
@@ -39,7 +39,7 @@ public class Header extends BasePage {
         clickElement(newPostLink);
     }
 
-    public void setDeleteBtn() {
+    public void clickDeleteBtn() {
         clickElement(deleteBtn);
     }
     public void clickConfirmBtn() {

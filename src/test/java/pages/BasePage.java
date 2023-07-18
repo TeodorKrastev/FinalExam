@@ -22,14 +22,18 @@ public class BasePage {
     }
 
     protected void clickElement(WebElement element) {
-        smallWait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
+        smallWait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
     protected void enterText(WebElement element, String text) {
-        smallWait.until(ExpectedConditions.visibilityOf(element));
+        waitForVisibility(element);
         element.sendKeys(text);
     }
+
+    public void waitForVisibility(WebElement element) {
+        smallWait.until(ExpectedConditions.visibilityOf(element));
+    }
+
     public void verifyUrl(String url) {
         mediumWait.until(ExpectedConditions.urlToBe(url));
     }
@@ -37,6 +41,4 @@ public class BasePage {
     public void verifyUrlContains(String url) {
         mediumWait.until(ExpectedConditions.urlContains(url));
     }
-
-
 }

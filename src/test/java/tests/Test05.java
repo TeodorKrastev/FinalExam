@@ -1,9 +1,15 @@
 package tests;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
+
+import java.time.Duration;
 
 public class Test05 extends BaseMethod {
     @DataProvider(name = "getData")
@@ -36,18 +42,16 @@ public class Test05 extends BaseMethod {
         searchPage.goToSearchField();
 
         System.out.println("6. Find specific person and follow him/her."); // the user will be "zelot"
+        UserProfilePage userProfilePage = new UserProfilePage(driver);
         searchPage.searchUser("zelot");
         searchPage.waitForUserInDropdown();
         searchPage.clickOnUser(0);
-        searchPage.clickFollow();
+        userProfilePage.clickFollow();
 
-        System.out.println("7. Go to  and verify that following number is increased.");
+        System.out.println("7. Go to profile and verify that following number is increased.");
         header.goToProfile();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        profilePage.waitForFollowingCountIncrease(currentFollowingCount);
+
         int newFollowersCount = profilePage.getFollowingCount();
         Assert.assertEquals(newFollowersCount, currentFollowingCount + 1, "Following number is not increased.");
     }
