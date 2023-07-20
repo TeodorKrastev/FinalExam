@@ -19,7 +19,7 @@ public class Header extends BasePage {
     @FindBy(linkText = "Delete post")
     WebElement deleteBtn;
 
-    @FindBy(xpath = "//button[text()='Yes']")
+    @FindBy(linkText = "Yes")
     WebElement confirmBtn;
 
     public Header(WebDriver driver) {
