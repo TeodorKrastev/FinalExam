@@ -25,7 +25,7 @@ public class Test08 extends BaseMethod {
         loginPage.verifyUrl();
         loginPage.login(username, password);
 
-        System.out.println("3. Go to profile page and click on all posts.");
+        System.out.println("3. Go to profile page on all posts and get current posts count.");
         header.goToProfile();
         ProfilePage profilePage = new ProfilePage(driver);
         profilePage.goToAllPosts();

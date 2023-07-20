@@ -1,15 +1,11 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.testng.Assert;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
 
-import java.time.Duration;
 
 public class Test05 extends BaseMethod {
     @DataProvider(name = "getData")
