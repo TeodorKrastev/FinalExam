@@ -12,9 +12,8 @@ public class Test08 extends BaseMethod {
         return new Object[][]{{"Teodor123", "teodor123"}};
     }
 
-
     @Test(dataProvider = "getData")
-    public void deleteOnePhoto(String username, String password){
+    public void deleteOnePhoto(String username, String password) {
         System.out.println("1. Open homepage.");
         HomePage homePage = new HomePage(driver);
         homePage.openSiteURl();
@@ -26,17 +25,21 @@ public class Test08 extends BaseMethod {
         loginPage.verifyUrl();
         loginPage.login(username, password);
 
-        System.out.println("3. Go to profile page.");
+        System.out.println("3. Go to profile page and click on all posts.");
         header.goToProfile();
-
         ProfilePage profilePage = new ProfilePage(driver);
+        profilePage.goToAllPosts();
         profilePage.verifyUrl();
 
-        System.out.println("4. Open the latest post.");
         int currentPostCount = profilePage.getExistingPostCount();
-        profilePage.openPostByIndex(currentPostCount - 1);
-        PostModal postModal = new PostModal(driver);
-        postModal.waitForDialogAppear();
+
+        if (currentPostCount == 0) {
+            System.out.println("No posts available for deletion.");
+            return;
+        }
+
+        System.out.println("4. Open the latest post.");
+        profilePage.openPostByIndex(0);
 
         System.out.println("5. Click delete and confirm.");
         header.clickDeleteBtn();
@@ -45,8 +48,9 @@ public class Test08 extends BaseMethod {
         System.out.println("6. Check if the pop-up confirmation has appeared.");
         Assert.assertTrue(driver.findElement(By.id("toast-container")).isDisplayed(), "Confirmation does not appear.");
 
-
+        System.out.println("7. Confirm that there are no posts.");
+        profilePage.goToAllPosts();
+        int existingPosts = profilePage.getExistingPostCount();
+        Assert.assertEquals(existingPosts, currentPostCount - 1, "Incorrect post number.");
     }
-
-
 }

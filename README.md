@@ -69,8 +69,9 @@ Test Seven - Change profile photo.
 Test Eight - Deleting One Photo from my profile
 1. Open homepage.
 2. Login with existing user.
-3. Go to profile page and get current posts count.
+3. Go to profile page and click on all posts.
 4. Open the latest post.
 5. Click delete and confirm.
 6. Check if the pop-up confirmation has appeared.
+7. Confirm that there are no posts.
 

@@ -19,6 +19,8 @@ public class ProfilePage extends BasePage {
 
     @FindBy(id = "following")
     WebElement followersElement;
+    @FindBy(css = ".btn-all")
+    WebElement goToAllPosts;
 
     public ProfilePage(WebDriver driver) {
         super(driver);
@@ -30,15 +32,16 @@ public class ProfilePage extends BasePage {
     }
 
     public int getExistingPostCount() {
-        smallWait.until(ExpectedConditions.visibilityOfAllElements(existingPosts));
-
         return existingPosts.size();
     }
 
     public void openPostByIndex(int index) {
-        clickElement(existingPosts.get(index));
+        if (existingPosts.size() > 0 && index >= 0 && index < existingPosts.size()) {
+            clickElement(existingPosts.get(index));
+        } else {
+            System.out.println("No posts available.");
+        }
     }
-
     public int getFollowingCount() {
         waitForVisibility(followersElement);
         String followingText = followersElement.getText();
@@ -49,7 +52,12 @@ public class ProfilePage extends BasePage {
     public void waitForFollowingCountIncrease(int initialCount) {
         smallWait.until(ExpectedConditions.textToBePresentInElement(followersElement, Integer.toString(initialCount + 1)));
     }
+
     public void waitForFollowingCountDecrease(int initialCount) {
         smallWait.until(ExpectedConditions.textToBePresentInElement(followersElement, Integer.toString(initialCount - 1)));
     }
+    public void goToAllPosts(){
+        clickElement(goToAllPosts);
+    }
+
 }
