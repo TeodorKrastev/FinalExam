@@ -34,7 +34,13 @@ public class Test07 extends BaseMethod {
         NewPostPage postPage = new NewPostPage(driver);
         postPage.uploadProfilePicture(file);
 
+
         System.out.println("5. Check if the pop-up confirmation has appeared.");
         Assert.assertTrue(driver.findElement(By.id("toast-container")).isDisplayed(), "Confirmation does not appear.");
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
